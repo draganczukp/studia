@@ -1,12 +1,6 @@
 # Systemy wbudowane
 
 
-```
-░█▀█░█▀█░▀▀█░█▀▀░█▀▄░█▀█░█░░░█▀█░░░█▀▀░█▀█
-░█▀▀░█░█░░░█░█▀▀░█▀▄░█▀█░█░░░█░█░░░█░█░█░█
-░▀░░░▀▀▀░▀▀░░▀▀▀░▀▀░░▀░▀░▀▀▀░▀▀▀░░░▀▀▀░▀▀▀
-```
-
 12 stron referatu 2 tygodnie
 
 | 1     | 2     | 3     | 4     | 5     | plik  | druk                      |
@@ -24,3 +18,16 @@ $K_o=\frac{N}{N_w}$
 $O_{całość} = K_o * O_r$
 
 # Temat 26
+Ready made computer boards for embedded systems
+
+## wymagania
+- Times New Roman 12pt
+- Odstęp między wierszami 1.5
+- A4
+- Marginesy:
+	- Top: 10
+	- Left: 20
+	- Right: 10
+	- Bot: 20
+## Tytuł maila
+{Grupa}\_{nr tematu}\_{nr części}\_{autorzy}
