@@ -31,3 +31,16 @@ Ready made computer boards for embedded systems
 	- Bot: 20
 ## Tytuł maila
 {Grupa}\_{nr tematu}\_{nr części}\_{autorzy}
+
+# Książki
+- Foundations of Embedded Systems - Sprinter 2014
+
+# Introduction into Embedded Systems
+
+```
+graph LR;
+cs[Computer Systems]-->pc[Computer]
+pc-->data[Data Processing]
+cs-->com[Communication Channels]
+com-->tr[Transfer]
+```

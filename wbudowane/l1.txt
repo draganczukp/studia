@@ -1,0 +1,18 @@
+mdm_0: mb_plb
+dlmb_cntrl: dlmb
+RS232_DCE: mb_plb
+
+RS232_DCE - RX: fpga_0_RS232_DCE_RX_pin
+RS232_DCE - TX: fpga_0_RS232_DCE_TX_pin
+LEDs_8Bit - GPIO_IO: No connection
+
+RS232_DCE: 0x84000000 - 0x8400FFFF
+LEDs_8Bit: 0x81400000 - 0x8140FFFF
+dmlb_cntlr: 0x00000000 - 0x00001FFF
+ilmb_cntlr: 0x00000000 - 0x00001FFF
+DDR_SDRAM: 0x8C000000 - 0x8FFFFFFF
+
+- implementation
+- synthesis
+- hdl
+- _xps
