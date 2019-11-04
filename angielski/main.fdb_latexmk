@@ -1,9 +1,9 @@
 # Fdb version 3
-["xdvipdfmx"] 1572631290 "main.xdv" "main.pdf" "main" 1572631290
-  "main.xdv" 1572631289 49376 43963060d46006f9c559f8280a890c53 "xelatex"
+["xdvipdfmx"] 1572882710 "main.xdv" "main.pdf" "main" 1572882710
+  "main.xdv" 1572882710 50008 6b57303186759afeaa237d6a142ce80f "xelatex"
   (generated)
   "main.pdf"
-["xelatex"] 1572631288 "main.tex" "main.xdv" "main" 1572631290
+["xelatex"] 1572882709 "main.tex" "main.xdv" "main" 1572882710
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1572595918 3332 103109f5612ad95229751940c61aada0 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1572595918 1528 f853c4d1b4e0550255e02831fdc8496f ""
   "/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1572595918 1458 43ab4710dc82f3edeabecd0d099626b2 ""
@@ -49,12 +49,12 @@
   "/usr/share/texmf-dist/tex/latex/wrapfig/wrapfig.sty" 1572592815 26220 3701aebf80ccdef248c0c20dd062fea9 ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1572595918 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1572616936 4126414 e9a6589b8d1117d455d7eb60e3e4a0b7 ""
-  "main.aux" 1572631289 1724 35e3bdd9b6203b541aa93e834faa0c6f "xelatex"
-  "main.out" 1572631289 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
-  "main.tex" 1572631287 5417 474eddcae01223055ec458357843509f ""
+  "main.aux" 1572882710 1724 35e3bdd9b6203b541aa93e834faa0c6f "xelatex"
+  "main.out" 1572882710 0 d41d8cd98f00b204e9800998ecf8427e "xelatex"
+  "main.tex" 1572882708 5508 704090beca7f893edb99c49538b0e7fd ""
   "preamble.tex" 1572631167 430 7eaaa41f4a918d25448ed45349aa21f0 ""
   (generated)
-  "main.out"
-  "main.aux"
   "main.log"
   "main.xdv"
+  "main.aux"
+  "main.out"
