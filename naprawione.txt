@@ -1,0 +1,57 @@
+#include "xparameters.h"
+#include "xgpio.h"
+#include "xutil.h"
+
+//====================================================
+
+unsigned int reverseBits(unsigned int num)
+{
+    unsigned int  NO_OF_BITS = sizeof(num) * 8;
+    unsigned int reverse_num = 0, i, temp;
+
+    for (i = 0; i < NO_OF_BITS; i++)
+    {
+        temp = (num & (1 << i));
+        if(temp)
+            reverse_num |= (1 << ((NO_OF_BITS - 1) - i));
+    }
+
+    return reverse_num;
+}
+
+int main (void) 
+{
+
+   XGpio dip, push, led;
+	int i, psb_check, dip_check, combined;
+	// define instance pointer for LEDs_8Bit device
+	
+	
+   printf("-- Start of the Program --\r\n");
+ 
+   XGpio_Initialize(&dip, XPAR_DIP_DEVICE_ID);
+	XGpio_SetDataDirection(&dip, 1, 0xffffffff);
+	
+	XGpio_Initialize(&push, XPAR_PUSH_DEVICE_ID);
+	XGpio_SetDataDirection(&push, 1, 0xffffffff);
+	// initialize and set data direction for LEDs_8Bit device
+	XGpio_Initialize(&led, XPAR_LEDS_8BIT_DEVICE_ID);
+	XGpio_SetDataDirection(&led, 1, 0xffffffff);
+
+
+	while (1)
+	{
+	  psb_check = XGpio_DiscreteRead(&push, 1);
+	  xil_printf("Push Buttons Status %x\r\n", psb_check);
+	  dip_check = XGpio_DiscreteRead(&dip, 1);
+	  xil_printf("DIP Switch Status %x\r\n", dip_check);
+	  
+      combined = (psb_check << 4) | reverseBits(dip_check <<  28);
+	  xil_printf("Combined status %x\r\n", combined);
+
+	  // output dip switches value on LEDs_8Bit device
+	  XGpio_DiscreteWrite(&led, 1, combined);
+
+	  for (i=0; i<99999; i++);
+	}
+}

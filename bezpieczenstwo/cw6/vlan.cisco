@@ -1,0 +1,43 @@
+enable
+conf t
+vlan 10
+name Faculty/Staff
+exit
+vlan 20
+name Students
+exit
+vlan 30
+name Guest(Default)
+exit
+vlan 99
+name Management&Native
+exit
+vlan 150
+name VOICE
+exit
+
+int fastEthernet 0/11
+switchport mode access
+switchport access vlan 10
+exit
+int fastEthernet 0/18
+switchport mode access
+switchport access vlan 20
+exit
+int fastEthernet 0/6
+switchport mode access
+switchport access vlan 30
+exit
+
+int fastEthernet 0/11
+switchport mode access
+switchport access vlan 10
+exit
+int fastEthernet 0/11
+switchport mode access
+switchport access vlan 10
+exit
+int fastEthernet 0/11
+switchport mode access
+switchport access vlan 10
+exit
