@@ -64,3 +64,29 @@ Używając narzędzia "Program FPGA" wgrano aplikację na płytkę i zweryfikowa
 	\includegraphics{img/putty-dziala.PNG}
 	\label{img:putty-dziala}
 \end{figure}
+
+Następnie zmieniono wywołania funkcji \verb`xil_printf` na \verb`printf`. Próba skompilowania kodu
+powoduje wyświetlenie błędu, mówiącego o za małej ilości pamięci w sekcji \verb`.text`.
+
+W oknie generowania skryptu linkującego zmieniono położenie sekcji \verb`.text` na
+\verb`DDRDDR_SDRAM` i ponownie skompilowano plik \verb`lab4.c`.
+
+Na płytkę wgrano domyślną aplikację bootloop. Następnie w menu "Xilinx Tools" kliknięto na "XMD
+Console". W konsoli XMD wpisano następujące polecenia:
+\begin{lstlisting}
+cd SDK\\SDK_Export\\TestApp\\Debug
+connect mb mdm
+dow TestApp.elf
+con
+\end{lstlisting}
+
+\newpage
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[height=10cm]{img/dziala.PNG}
+	\label{fig:dziala}
+\end{figure}
+
+W ten sposób na płytkę został wgrany program TestApp. Połączenie \verb`con` uruchamia go, a
+zatrzymać go można poleceniem \verb`stop`.
