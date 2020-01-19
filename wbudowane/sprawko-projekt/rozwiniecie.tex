@@ -1,0 +1,78 @@
+\section{Przebieg projektu}
+\subsection{Zainstalowanie OpenCV}
+
+Pierwszym krokiem było zainstalowanie biblioteki OpenCV.\@ Użyto do tego poniższego skryptu
+
+\lstinputlisting{src/installopencv.sh}
+
+\subsection{Przechwytywanie i wyświetlanie obrazu z kamery}
+Po skończonej instalacji i kompilacji, następnym krokiem było przechwycenie obrazu z kamery i
+wyświetlenie go w oknie. W tym celu użyto następującego kodu:
+
+\lstinputlisting[language=Python]{src/camera.py}
+
+Obraz nie jest w żaden sposób przetwarzany, i kod ten służy tylko do sprawdzenia, że kamera działa.
+
+\subsection{Wykrywanie znaczników}
+
+Mając obraz z kamery, można było zacząć wykrywać markery. Jako podstawy użyto kody z
+poprzedniego punktu. Zmodyfikowano go tak, aby wykrywał znaczniki Aruco na przychwyconym
+obrazie.
+
+Na początku skryptu zadeklarowano dwie zmienne, wymagane przez OpenCV:
+
+\begin{lstlisting}[language=Python]
+aruco_dict  = aruco.getPredefinedDictionary(aruco.DICT_4X4_50)
+parameters  = aruco.DetectorParameters_create()
+\end{lstlisting}
+
+Pierwsza zmienna to lista predefiniowanych znaczników, z kolekcji pięćdziesięciu znaczników o
+wymiarach 4 na 4, druga to domyślne parametry
+wyszukiwania znaczników.
+
+Następnie ustawiono rozdzielczość, z jaką przechwytywany jest obraz z kamery
+
+\begin{lstlisting}
+cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
+\end{lstlisting}
+
+W głównej pętli dodano filtr, konwertujący przechwycony obraz na skalę szarości. Konwersja ta jest
+wymagana przez OpenCV, gdyż znacząco zmniejsza to złożoność obliczeniową tego zadania.
+\begin{lstlisting}
+gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+\end{lstlisting}
+
+W uzyskanym w ten sposób obrazie wyszukano wszystkiego, co przypomina znacznik.
+
+\begin{lstlisting}[language=Python]
+    corners, ids, rejected = aruco.detectMarkers(image=gray, dictionary=aruco_dict, parameters=parameters)
+
+    if ids is not None:
+        aruco.drawDetectedMarkers(frame, corners)
+
+\end{lstlisting}
+
+Następnie należy w jakiś sposób wykorzystać znalezione znaczniki. Poniższy fragment kodu oblicza
+pozycję znacznika, a następnie wypisuje znalezione dane na standardowym strumieniu wyjścia:
+
+\begin{lstlisting}[language=Python]
+    if ids is not None:
+        aruco.drawDetectedMarkers(frame, corners)
+        for i in range(0, len(ids) ):
+                corner = corners[i][0]
+                x_sum = corner[0][0] + corner[1][0] + corner[2][0] + corner[3][0]
+                x = x_sum /4
+                normalised = (x - 640) / 640
+                print(ids[i][0], -normalised)
+\end{lstlisting}
+
+Pozycja znacznika jest znormalizowana do zakresu $[-1, 1]$.
+
+W każdej klatce, w której został znaleziony jakiś znacznik, na standardowym wyjściu wypisywana
+jest informacja w formacie \verb`"[id_znacznika] [pozycja_x]"`
+
+Skończony, działający kod wygląda następująco:
+\lstinputlisting[language=Python]{src/detect.py}
+

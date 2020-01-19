@@ -1,0 +1,23 @@
+\section{Napotkane problemy}
+\subsection{Dokładność wykrywania znaczników}
+
+Z powodu braku plików z kalibracją kamery, program często "gubi" znaczniki, i nie jest w stanie
+wykrywać ich ze stuprocentową skutecznością.
+
+\subsubsection{Możliwe rozwiązanie}
+
+Używając biblioteki OpenCV możliwe jest napisanie programu, który wygeneruje niezbędne informacje
+kalibracyjne. Następnie można wczytać te informacje do programu i przekazać je jako parametry
+funkcji \verb`aruco.DetectMarkers`.
+
+\subsection{Dane nie są wysyłane przez port szeregowy}
+
+Ze względu na brak czasu, nie udało się zaimplementować wysyłania wynikowych informacji przez port
+szeregowy.
+
+\subsubsection{Możliwe rozwiązania}
+
+Możliwe są dwa rozwiązania. Pierwsze z nich nie wymaga modyfikacji kodu, a jedynie przekierowanie
+standardowego wyjścia programu na port szeregowy za pomocą Unixowego operatora przekierowania
+"\verb`>`". Drugie rozwiązanie to zamiana funkcji "\verb`print`"" w 28 linijce kodu na funkcję, 
+która wyśle dane na port szeregowy.

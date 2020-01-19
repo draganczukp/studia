@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Cel\040Projektu}{}% 1
+\BOOKMARK [1][-]{section.2}{Przebieg\040projektu}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Zainstalowanie\040OpenCV}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Przechwytywanie i wyświetlanie obrazu z kamery}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Wykrywanie znaczników}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Napotkane\040problemy}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Dokładność wykrywania znaczników}{section.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Możliwe rozwiązanie}{subsection.3.1}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Dane nie są wysyłane przez port szeregowy}{section.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Możliwe rozwiązania}{subsection.3.2}% 10

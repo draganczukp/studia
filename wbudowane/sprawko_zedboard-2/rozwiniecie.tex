@@ -1,0 +1,149 @@
+\section{Przebieg ćwiczenia}
+\subsection{Utworzenie nowego projektu}
+Otwarto program Xilinx Platform Studio. W nowo otwartym okienku wybrano opcję "Base System
+Builder Wizard (recommended)". W następnym oknie kliknięto na
+przycisk "Browse" i wybrano folder, do którego powinien być zapisany projekt. W tym samym oknie
+wybrano opcję "PLB System" i kliknięto OK.
+W okienku "Board Selection" wybrano "I would like to create a new design option", potem kliknięto
+"Next". Następnie wybrano informacje o używanej płytce:
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+		Board Vendor & Xilinx \\
+		Board Name & Spartan-3E Starter Board \\
+		Board Revision & D
+	\end{tabular}
+\end{center}
+Kliknięto przycisk "Next", następnie upewniono się, że wybrana jest opcja "Single-Processor System"
+i kliknięto "Next".
+
+Ustawiono konfigurację procesora:
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+		Reference Clock Frequency & 50 MHz\\
+		Processor Type			& MicroBlaze\\
+		System Clock Frequency	& 50 MHz\\
+		Local Memory			  & 8 KB\\
+		Debug Interface		   & On-Chip H/W debug module\\
+	\end{tabular}
+\end{center}
+\subsection{Konfiguracja urządzeń}
+
+W oknie "Peripheral Configuration" skonfigurowano urządzenia peryferyjne znajdujące się na płytce
+
+\subsubsection*{RS232\textunderscore DCE}
+
+\begin{center}
+	\begin{tabular}{|l|l|}
+		RS232\textunderscore DCE & xps\textunderscore aurtlite \\
+		Baud Rate & 115200 \\
+		Data Bits & 8 \\
+		Parity & None \\
+		Use Interrupt & Odznaczone
+	\end{tabular}
+\end{center}
+\subsubsection*{XPS GPIO (LEDs\textunderscore 8Bit):}
+
+Odznaczone "Use Interrupt"
+
+W oknie "Cache configuration" upewniono się, że nic nie jest zaznaczone. W oknie "Summary"
+kliknięto "Finish"
+
+\subsection{Analizowanie sprzętu}
+
+Używając diagramu blokowego, wygenerowanego przyciskiem "Generate Block Diagram Image in
+Project", oraz widoku "System Assembly View" znaleziono odpowiedzi na zadane pytania:
+
+\subsubsection{List the name of the bus connection to the following peripherals:}
+
+\begin{center}
+\begin{tabular}{l l}
+	mdm\textunderscore 0 & mb\textunderscore plb\\
+	dlmb\textunderscore cntrl & dlmb\\
+	RS232\textunderscore DCE & mb\textunderscore plb
+\end{tabular}
+\end{center}
+
+\subsubsection{List the nets which are connected to the following ports}
+
+\begin{center}
+\begin{tabular}{l l}
+	RS232\textunderscore DCE - RX& fpga\textunderscore 0\textunderscore RS232\textunderscore
+	DCE\textunderscore RX\textunderscore pin\\
+	RS232\textunderscore DCE - TX& fpga\textunderscore 0\textunderscore RS232\textunderscore
+	DCE\textunderscore TX\textunderscore pin\\
+	LEDs\textunderscore 8Bit - GPIO\textunderscore IO& No connection
+\end{tabular}
+\end{center}
+
+\subsubsection{Select Addresses filter and list the address for the following instances:}
+
+\begin{center}
+\begin{tabular}{l l}
+	RS232\textunderscore DCE - Base address& 0x84000000\\
+	RS232\textunderscore DCE - High address& 0x8400FFFF\\
+	LEDs\textunderscore 8Bit - Base address& 0x81400000\\
+	LEDs\textunderscore 8Bit - High address& 0x8140FFFF\\
+	dmlb\textunderscore cntlr - Base address& 0x00000000\\
+	dmlb\textunderscore cntlr - High address& 0x00001FFF\\
+	ilmb\textunderscore cntlr - Base address& 0x00000000\\
+	ilmb\textunderscore cntlr - High address& 0x00001FFF\\
+	DDR\textunderscore SDRAM - Base address& 0x8C000000\\
+	DDR\textunderscore SDRAM - High address&  0x8FFFFFFF
+\end{tabular}
+\end{center}
+
+\subsection{Wygenerowanie plików VHDL}
+
+Za pomocą narzędzia "Hardware Generate Netlist" wygenerowano pliki VHDL opisujące obecną
+konfigurację sprzętową.
+
+Utworzone zostały następujące katalogi:
+
+\begin{itemize}
+	\item implementation
+	\item synthesis
+	\item hdl
+	\item \textunderscore xps
+\end{itemize}
+
+\subsection{Generowanie aplikacji testującej pamięć}
+W menu "Project" kliknięto opcję "Export Hardware Design to SDK". Kliknięto przycisk "Export \&
+Launch SDK" z domyślnymi wartościami, a następnie wybrano folder "SKD\textunderscore Export" znajdujący się w
+plikach projektu.
+
+W menu "File" wybrano podmenu "New" a następnie wybrano opcję "Xilinx C Project". Z listy
+"Select Project Template" wybrano szablon "Memory Test" i kliknięto "Next". Następnie kliknięto
+"Finish", zostawiając domyślne opcje.
+
+\subsection{Sprawdzanie za pomocą sprzętu}
+
+Podłączono płytkę Spartan-3E do komputera oraz do zasilania według schematu w
+zawartego w instrukcji.
+
+Uruchomiono program Putty i ustawiono następujące opcje:
+\begin{enumerate}
+	\item W menu "Session" wybrano typ połączenia na Serial i ustawiono "Speed" na 115200
+	\item W menu "Serial" ustawiono następujące wartości:
+\end{enumerate}
+
+\begin{center}
+\begin{tabular}{|l|l|}
+	Serial line to connect to & COM1\\
+	Speed (baud) & 115200\\
+	Data bits & 8\\
+	Stop bits & 1 \\
+	Parity & None\\
+	Flow control & None
+\end{tabular}
+\end{center}
+
+Następnie kliknięto "Open"
+
+W menu "Xilinx Tools" wybrano pozycję "Program FPGA". W nowym okienku w kolumnie "ELF File to
+Initialize in Block RAM" wybrano plik "memory\textunderscore test\textunderscore 0.elf"
+
+Po kliknięciu przycisku "Program", plik .elf oraz plik system.bit zostały połączone i przesłane
+do płytki. W oknie programu Putty wyświetlone zostały informacje o pamięci zainstalowanej na
+płytce.

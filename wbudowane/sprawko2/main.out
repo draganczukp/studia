@@ -1,9 +1,14 @@
 \BOOKMARK [1][-]{section.1}{Wstęp}{}% 1
 \BOOKMARK [2][-]{subsection.1.1}{Cel ćwiczenia}{section.1}% 2
-\BOOKMARK [1][-]{section.2}{Przebieg ćwiczenia}{}% 3
-\BOOKMARK [2][-]{subsection.2.1}{Modyfikacja\040projektu\040z\040laboratorium\0403}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.2}{Dodanie\040BRAM\040i\040kontroler\040BRAM}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.3}{Tworzenie\040aplikacji}{section.2}% 6
-\BOOKMARK [2][-]{subsection.2.4}{Analiza zbudowanych obiektów}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.5}{Weryfikacja w sprzęcie}{section.2}% 8
-\BOOKMARK [1][-]{section.3}{Wnioski}{}% 9
+\BOOKMARK [2][-]{subsection.1.2}{Użyte IP}{section.1}% 3
+\BOOKMARK [1][-]{section.2}{Przebieg ćwiczenia}{}% 4
+\BOOKMARK [2][-]{subsection.2.1}{Utworzenie\040nowego\040projektu}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.2}{Konfiguracja urządzeń}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.3}{Analizowanie sprzętu}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.3.1}{List\040the\040name\040of\040the\040bus\040connection\040to\040the\040following\040peripherals:}{subsection.2.3}% 8
+\BOOKMARK [3][-]{subsubsection.2.3.2}{List\040the\040nets\040which\040are\040connected\040to\040the\040following\040ports}{subsection.2.3}% 9
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Select\040Addresses\040filter\040and\040list\040the\040address\040for\040the\040following\040instances:}{subsection.2.3}% 10
+\BOOKMARK [2][-]{subsection.2.4}{Wygenerowanie plików VHDL}{section.2}% 11
+\BOOKMARK [2][-]{subsection.2.5}{Generowanie aplikacji testującej pamięć}{section.2}% 12
+\BOOKMARK [2][-]{subsection.2.6}{Sprawdzanie za pomocą sprzętu}{section.2}% 13
+\BOOKMARK [1][-]{section.3}{Wnioski}{}% 14
